@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Send XML for ChromeApp</title>
+  <script>
+    function getParam() {
+      var categoryKey = "";
+      var url = location.href;
+      var parameters = url.split("?");
+      if (parameters.length > 1) {
+        var params = parameters[1].split("&");
+        var paramsArray = [];
+        for (var i = 0; i < params.length; i++) {
+          var neet = params[i].split("=");
+          paramsArray.push(neet[0]);
+          paramsArray[neet[0]] = neet[1];
+        }
+        categoryKey = paramsArray["url"];
+      }
+      return categoryKey;
+    }
+
+    function checkChrome() {
+      var userAgent = window.navigator.userAgent.toLowerCase();
+
+      if (userAgent.indexOf('chrome') == -1) {
+        alert("Script Work only Chrome.");
+      }
+    }
+
+    function back(){
+      if(document.referrer.length > 0){
+        location.href = document.referrer;
+      }else{
+        location.href = "http://lets.makewitharduino.com";
+      }
+    }
+  </script>
+  </head>
+<body>
+  <script>
+    checkChrome();
+    console.log(document.referrer);
+    var extId = "koagejpgkeghpjollmfpgoemkmblejgc";
+    var url = getParam();
+    if(url.length > 0 & url.indexOf('https://raw.githubusercontent.com/') == 0){
+      chrome.runtime.sendMessage(extId,
+                                 {data: { url : url}});
+      console.log("send");
+    }
+    setTimeout(back(), 3000);
+  </script>
+</body>
+</html>
