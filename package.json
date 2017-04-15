@@ -1,9 +1,12 @@
 {
   "name": "cauliflower",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "build": {
-    "app-bundle-id": "com.makewitharduino.cauliflower ",
+    "app-bundle-id": "com.makewitharduino.cauliflower",
     "app-category-type": "public.app-category.utilities"
+  },
+  "scripts":{
+    "package": "electron-packager . Cauliflower --platform=darwin --arch=all --version=1.6.2"
   },
   "main": "main.js",
   "dependencies": {

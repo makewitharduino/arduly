@@ -14,6 +14,8 @@
         delete window.require;
         delete window.exports;
         delete window.module;
+        const fs = require('fs');
+        const {dialog} = require('electron').remote;
     </script>
     <script type="text/javascript" src="header.js"></script>
 </head>
@@ -22,7 +24,7 @@
 
     <nav>
         <div class="nav-wrapper blue-grey darken-4">
-            <a href="./" class="brand-logo">BlocklyDuino Editor</a>
+            <a href="./" class="brand-logo">Cauliflower</a>
             <ul class="right show-on-small">
                 <li><a class="tooltipped" href="https://chrome.google.com/webstore/detail/blocklyduino-editor/ohncgafccgdbigbbikgkfbkiebahihmb" target="_blank" id="get-app" data-tooltip="I am tooltip"><i class="material-icons">get_app</i></a>
                 </li>
@@ -110,7 +112,7 @@
                             </tr>
                         </tbody>
                     </table>
-                
+
             </form>
         </div>
         <div class="modal-footer">
@@ -161,17 +163,13 @@
 
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
-        <li><a class="modal-trigger" href="#modal_import" id="button_import">Import</a>
-        </li>
+        <li><a class="modal-trigger" href="#modal_import" id="button_import">Import</a></li>
         <li class="divider">
-            </li><li><a class="modal-trigger" href="#!" id="button_export" onclick="export_xml()">Export</a>
-        </li>
+        <li><a class="modal-trigger" href="#!" id="button_export" onclick="export_xml()">Export</a></li>
         <li class="divider">
-            </li><li><a class="modal-trigger" href="#!" id="button_discard">Discard</a>
-        </li>
+        <li><a class="modal-trigger" href="#!" id="button_discard">Discard</a></li>
         <li class="divider">
-            </li><li><a class="modal-trigger" href="#!" id="button_save_as">Save as..</a>
-        </li>
+        <li><a class="modal-trigger" href="#!" id="button_save_as">Save as..</a></li>
     </ul>
 
     <table id="main">
