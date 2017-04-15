@@ -282,7 +282,7 @@ function setCharacter(){
   $("#change-lang").attr("data-tooltip",Blockly.Msg.CHANGE_LANG);
   $("#dialog-lang-title").text(Blockly.Msg.DIALOG_LANG_TITLE);
   $("#dialog-block-title").text(Blockly.Msg.DIALOG_BLOCK_TITLE);
-  
+
   $("#button_import").text(Blockly.Msg.BUTTON_IMPORT);
   $("#button_export").text(Blockly.Msg.BUTTON_EXPORT);
   $('#textarea_import_label').text(Blockly.Msg.TEXTAREA_IMPORT_LABEL);

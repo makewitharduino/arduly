@@ -10,6 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <!--Import jQuery before materialize.js-->
+    <script>
+        window.nodeRequire = require;
+        delete window.require;
+        delete window.exports;
+        delete window.module;
+        const fs = require('fs');
+        const {dialog} = require('electron').remote;
+    </script>
     <script type="text/javascript" src="header.js"></script>
 </head>
 
@@ -126,7 +134,7 @@
             <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">CANCEL</a>
         </div>
     </div>
-    
+
     <!-- modal_import Structure -->
     <div id="modal_import" class="modal">
         <div class="modal-content">
@@ -153,32 +161,34 @@
             <a id="dialog_export_ok" href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
         </div>
     </div>
-    
+
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
-        <li><a class="modal-trigger" href="#modal_import" id="button_import">Import</a>
-        </li>
+        <li><a class="modal-trigger" href="#modal_import" id="button_import">Import</a></li>
         <li class="divider"></li>
-        <li><a class="modal-trigger" href="#!" id="button_export" onclick="export_xml()">Export</a>
-        </li>
+        <li><a class="modal-trigger" href="#!" id="button_export" onclick="export_xml()">Export</a></li>
+        <li class="divider"></li>
+        <li><a class="modal-trigger" href="#!" id="button_discard">Discard</a></li>
+        <li class="divider"></li>
+        <li><a class="modal-trigger" href="#!" id="button_save_as">Save as..</a></li>
     </ul>
-    
+
     <table id="main">
         <tr>
             <td>
                 <table id="tab">
                     <tr id="tabRow">
                         <td id="tab_blocks" class="tabon " onclick="tabClick('blocks')">Blocks</td>
-                        <td class="tabmin">&nbsp;</td>
+                        <td class="tabmin"> </td>
                         <td id="tab_arduino" class="taboff" onclick="tabClick('arduino')"></td>
-                        <td class="tabmin">&nbsp;</td>
+                        <td class="tabmin"> </td>
                         <td class="tabmax">
-                            <a href="#" class="hide-link tooltipped" id="copy-button" data-tooltip="I am tooltip" data-clipboard-target="content_arduino" data-clipboard-text="Clip Me!"><i class="small material-icons">content_copy</i></a>
-                            <a href="#" class="hide-link tooltipped" id="discard" onclick="discard()" data-tooltip="I am tooltip"><i class="small material-icons">delete</i></a>
-                            <a href="#" class="hide-link tooltipped" data-tooltip="I am tooltip" id="save" onclick="save()"><i class="small material-icons">cloud_download</i></a>
-                            <a href="#" class="hide-link tooltipped" id="fakeload" data-tooltip="I am tooltip"><i class="small material-icons">cloud_upload</i></a>
+                            <!--<a href="#" class="hide-link tooltipped" id="copy-button" data-tooltip="I am tooltip" data-clipboard-target="content_arduino" data-clipboard-text="Clip Me!"><i class="small material-icons">content_copy</i></a>-->
+                            <a href="#" class="hide-link tooltipped" id="button_new" data-tooltip="I am tooltip"><i class="small material-icons">create</i></a>
+                            <a href="#" class="hide-link tooltipped" id="button_open" data-tooltip="I am tooltip"><i class="small material-icons">folder_open</i></a>
+                            <a href="#" class="hide-link tooltipped" data-tooltip="I am tooltip" id="button_save"><i class="small material-icons">save</i></a>
                             <a class="hide-link dropdown-button" href="#" data-activates="dropdown1"><i class="small material-icons">arrow_drop_down</i></a>
-                            <input type="file" id="load" style="display: none;" />
+                            <input type="file" id="load" style="display: none;">
                         </td>
                     </tr>
                 </table>
